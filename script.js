@@ -252,18 +252,13 @@ botonesAgregar.forEach(boton => {
 });
 
 /* ==========================================
-   WHATSAPP MEJORADO
+   WHATSAPP – SIN NOMBRE NI DIRECCIÓN
    ========================================== */
 botonPagar.addEventListener("click", () => {
     if (carrito.length === 0) {
         alert("🛒 Agrega al menos un producto al carrito.");
         return;
     }
-
-    const nombre = prompt("👤 Ingresa tu nombre completo:");
-    if (nombre === null) return;
-    const direccion = prompt("📍 Ingresa tu dirección de envío:");
-    if (direccion === null) return;
 
     let mensaje = "🛒 *NUEVO PEDIDO DE RELOJES*%0A%0A";
     let total = 0;
@@ -278,8 +273,6 @@ botonPagar.addEventListener("click", () => {
 
     mensaje += `━━━━━━━━━━━━━━%0A`;
     mensaje += `💰 *TOTAL:* S/${total.toFixed(2)}%0A%0A`;
-    mensaje += `👤 *Nombre:* ${nombre}%0A`;
-    mensaje += `📍 *Dirección:* ${direccion}%0A%0A`;
     mensaje += `Hola, deseo realizar este pedido.`;
 
     const numero = "51967483151";
