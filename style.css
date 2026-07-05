@@ -1,0 +1,499 @@
+/* ==========================================
+   VARIABLES GLOBALES
+   ========================================== */
+:root {
+    --negro: #111111;
+    --dorado: #D4AF37;
+    --dorado-claro: #F5E6A3;
+    --plateado: #C0C0C0;
+    --blanco: #ffffff;
+    --gris: #f5f5f5;
+    --gris2: #dddddd;
+    --gris3: #777777;
+    --radio: 18px;
+    --sombra: 0px 8px 30px rgba(0, 0, 0, 0.1);
+    --transicion: 0.35s ease;
+}
+
+/* ==========================================
+   RESET Y CONFIGURACIÓN
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--blanco);
+    color: var(--negro);
+    min-height: 100vh;
+}
+img {
+    width: 100%;
+    display: block;
+}
+a {
+    text-decoration: none;
+}
+button {
+    cursor: pointer;
+    border: none;
+    transition: var(--transicion);
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+header {
+    width: 100%;
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 45px 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--dorado);
+    box-shadow: var(--sombra);
+}
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--dorado);
+    margin-bottom: 15px;
+}
+header h1::before {
+    content: "⌚ ";
+}
+.frase {
+    font-size: 18px;
+    color: var(--plateado);
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+.maps {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--dorado);
+    color: var(--negro);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: var(--transicion);
+}
+.maps:hover {
+    transform: translateY(-4px);
+    background: #c5a032;
+    color: #000;
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+   ========================================== */
+.contenedor {
+    width: 95%;
+    max-width: 1500px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* ==========================================
+   PRODUCTOS
+   ========================================== */
+.productos h2 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    border-left: 5px solid var(--dorado);
+    padding-left: 20px;
+    margin-bottom: 35px;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* ==========================================
+   TARJETA DE PRODUCTO
+   ========================================== */
+.card {
+    background: var(--blanco);
+    border: 1px solid var(--gris2);
+    border-radius: var(--radio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: var(--transicion);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: aparecer 0.6s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 18px 45px rgba(0, 0, 0, 0.15);
+    border-color: var(--dorado);
+}
+.card img {
+    height: 240px;
+    object-fit: cover;
+    background: #fafafa;
+    transition: 0.4s;
+}
+.card:hover img {
+    transform: scale(1.04);
+}
+.card h3 {
+    font-size: 22px;
+    padding: 18px 20px 8px;
+    font-weight: 600;
+    color: var(--negro);
+}
+.precio {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dorado);
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+.valoracion {
+    padding: 0 20px 10px;
+    font-size: 16px;
+    color: var(--gris3);
+}
+.valoracion span {
+    font-weight: 600;
+    color: var(--negro);
+}
+
+/* Etiquetas de oferta / regalo */
+.etiqueta {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    z-index: 10;
+    letter-spacing: 0.5px;
+}
+.oferta {
+    background: var(--dorado);
+    color: var(--negro);
+}
+.regalo {
+    background: var(--plateado);
+    color: var(--negro);
+}
+
+/* Botón agregar */
+.agregar {
+    margin: 15px 20px 20px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--negro);
+    color: var(--blanco);
+    font-size: 16px;
+    font-weight: 600;
+    transition: var(--transicion);
+    border: 1px solid var(--negro);
+}
+.agregar:hover {
+    background: var(--dorado);
+    color: var(--negro);
+    border-color: var(--dorado);
+    transform: translateY(-2px);
+}
+.agregar:active {
+    transform: scale(0.96);
+}
+.agregar.agregado {
+    background: #2e7d32;
+    border-color: #2e7d32;
+    color: white;
+}
+
+/* ==========================================
+   CARRITO
+   ========================================== */
+.carrito {
+    position: sticky;
+    top: 25px;
+    background: var(--blanco);
+    border: 1px solid var(--gris2);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 25px;
+    transition: 0.3s;
+}
+.carrito.actualizado {
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+}
+.carrito h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 300;
+    border-bottom: 2px solid var(--dorado);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+#contadorCarrito {
+    font-weight: 600;
+    color: var(--dorado);
+    margin-left: auto;
+}
+
+#listaCarrito {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+#listaCarrito::-webkit-scrollbar {
+    width: 6px;
+}
+#listaCarrito::-webkit-scrollbar-thumb {
+    background: var(--dorado);
+    border-radius: 50px;
+}
+.vacio {
+    color: var(--gris3);
+    text-align: center;
+    padding: 35px 0;
+}
+
+/* Item del carrito */
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+.itemInfo {
+    flex: 1;
+}
+.itemInfo h4 {
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+.itemInfo span {
+    color: var(--gris3);
+    font-size: 15px;
+}
+.cantidad {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+.cantidad button {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--negro);
+    color: var(--blanco);
+    font-size: 16px;
+    transition: 0.25s;
+}
+.cantidad button:hover {
+    background: var(--dorado);
+    color: var(--negro);
+}
+.eliminar {
+    background: #b71c1c;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.eliminar:hover {
+    background: #880e0e;
+    transform: scale(1.1);
+}
+
+/* Total y beneficios */
+.total {
+    margin-top: 25px;
+    border-top: 2px solid var(--dorado);
+    padding-top: 20px;
+}
+.total p {
+    font-size: 14px;
+    color: var(--gris3);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+.total h3 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 26px;
+    font-weight: 400;
+}
+#total {
+    font-weight: 700;
+    color: var(--dorado);
+}
+
+#pagar {
+    width: 100%;
+    margin-top: 20px;
+    height: 58px;
+    background: var(--negro);
+    color: var(--blanco);
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+#pagar:hover {
+    background: var(--dorado);
+    color: var(--negro);
+    transform: translateY(-3px);
+}
+#pagar i {
+    margin-right: 10px;
+}
+
+/* ==========================================
+   TOAST NOTIFICACIÓN
+   ========================================== */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 20px 30px;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    transform: translateY(120px);
+    opacity: 0;
+    transition: 0.5s ease;
+    border-left: 6px solid var(--dorado);
+}
+.toast.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+.toast-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+}
+.toast-contenido span {
+    font-size: 18px;
+    font-weight: 500;
+}
+.toast-botones {
+    display: flex;
+    gap: 12px;
+}
+.toast-botones button {
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    background: transparent;
+    color: var(--blanco);
+    border: 1px solid var(--blanco);
+    transition: 0.3s;
+}
+.toast-botones button:hover {
+    background: var(--dorado);
+    color: var(--negro);
+    border-color: var(--dorado);
+}
+
+/* ==========================================
+   ANIMACIONES
+   ========================================== */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 1100px) {
+    .contenedor {
+        grid-template-columns: 1fr;
+    }
+    .carrito {
+        position: relative;
+        top: 0;
+        margin-top: 40px;
+    }
+}
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    }
+    .card img {
+        height: 180px;
+    }
+    .toast {
+        right: 10px;
+        left: 10px;
+        bottom: 10px;
+        padding: 16px;
+    }
+}
+@media (max-width: 500px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    .carrito {
+        padding: 18px;
+    }
+}
+/* ==========================================
+   STOCK
+   ========================================== */
+.stock {
+    font-size: 15px;
+    color: var(--gris3);
+    padding: 0 20px 8px;
+}
+.stock-cantidad {
+    font-weight: 700;
+    color: var(--negro);
+}
+.stock-cantidad.agotado {
+    color: #c62828;
+}
+button.agotado {
+    background: #888;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+button.agotado:hover {
+    transform: none;
+    background: #888;
+}
